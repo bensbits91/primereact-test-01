@@ -21,8 +21,6 @@ const Ui = ({ items }) => {
     }, [dispatch]);
 
     const handleSubmit = (oldRowData, newRowData) => {
-        console.log('bb ~  ~ file: ui.js:43 ~ handleSubmit ~ oldRowData:', oldRowData);
-        console.log('bb ~  ~ file: ui.js:43 ~ handleSubmit ~ newRowData:', newRowData);
         if (newRowData.id) {
             dispatch(updateItemAction(newRowData));
         } else {
