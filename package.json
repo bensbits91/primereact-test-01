@@ -1,0 +1,34 @@
+{
+  "name": "primereact-test-01",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev": "parcel src/index.html",
+    "server": "node server/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@fastify/static": "^8.0.4",
+    "axios": "^1.7.9",
+    "dotenv": "^16.4.7",
+    "fastify": "^5.2.1",
+    "fastify-static": "^4.6.1",
+    "mongoose": "^8.9.5",
+    "primereact": "^10.9.1",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-redux": "^9.2.0",
+    "redux": "^5.0.1",
+    "redux-thunk": "^3.1.0",
+    "uuid": "^11.0.5"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.26.0",
+    "@babel/plugin-transform-class-properties": "^7.25.9",
+    "parcel-bundler": "^1.12.5"
+  }
+}
