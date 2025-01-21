@@ -20,8 +20,6 @@ const addItem = async (request, reply) => {
         return NewItem.save();
     } catch (err) {
         console.log(err.errors);
-        // console.log('\n\nerror in adding item\n\n');
-        // console.log(JSON.parse(err.errors));
         return err.errors;
     }
 };

@@ -67,7 +67,7 @@ const Table = ({
         const { rowData, newRowData } = e;
         const wasChanged = JSON.stringify(rowData) !== JSON.stringify(newRowData);
         if (wasChanged) {
-            handleSubmit(e.rowData, e.newRowData);
+            handleSubmit(rowData, newRowData);
         }
     };
 
