@@ -45,7 +45,8 @@ const Ui = ({ items }) => {
         }
     };
 
-    const itemsWithEmptyRow = [...items, {}];
+    const emptyItem = { name: '', type: undefined, status: undefined, rating: 0 };
+    const itemsWithEmptyRow = [...items, emptyItem];
 
     return (
         <>

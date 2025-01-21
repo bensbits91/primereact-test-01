@@ -75,11 +75,16 @@ const Table = ({
         <DataTable
             value={items}
             editMode='cell'
+            size='small'
             stripedRows
+            sortMode='multiple'
+            removableSort
+            // frozenValue={[]}
             tableStyle={{ minWidth: '50rem' }}>
             <Column
                 field='name'
                 header='Name'
+                sortable={true}
                 editor={(options) => textEditor(options)}
                 onCellEditComplete={onCellEditComplete}></Column>
             <Column
@@ -90,11 +95,13 @@ const Table = ({
             <Column
                 field='status'
                 header='Status'
+                sortable={true}
                 editor={(options) => statusEditor(options)}
                 onCellEditComplete={onCellEditComplete}></Column>
             <Column
                 field='rating'
                 header='Rating'
+                sortable={true}
                 body={ratingBodyTemplate}
                 editor={(options) => ratingEditor(options)}
                 onCellEditComplete={onCellEditComplete}></Column>
