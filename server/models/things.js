@@ -1,8 +1,8 @@
 const { Int32 } = require('bson');
-const mongoose = require('mongoose');
+const { Schema, model } = require('mongoose');
 const { types, statuses } = require('../../constants');
 
-const thingSchema = new mongoose.Schema({
+const thingSchema = new Schema({
     id: { type: String, required: true },
     name: { type: String, required: true },
     type: { type: String, enum: [...types] },
@@ -11,6 +11,6 @@ const thingSchema = new mongoose.Schema({
     isSoftDeleted: { type: Boolean, default: false, index: true }
 });
 
-const Thing = mongoose.model('Thing', thingSchema);
+const Thing = model('Thing', thingSchema);
 
 module.exports = { Thing };
