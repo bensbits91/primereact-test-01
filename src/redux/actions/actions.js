@@ -37,9 +37,9 @@ export const getTmdbDataAction = () => {
 
 export const SET_IS_PANEL_VISIBLE = 'Show or hide panel';
 
-export const setIsPanelVisible = (visible) => ({
+export const setIsPanelVisible = (visible, panelData) => ({
     type: SET_IS_PANEL_VISIBLE,
-    payload: visible
+    payload: { visible, panelData }
 });
 
 export const CREATE_ITEM_SUCCESS = 'Item created successfully';

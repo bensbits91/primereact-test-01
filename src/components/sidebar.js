@@ -4,8 +4,11 @@ import { Sidebar as PrimeSideBar } from 'primereact/sidebar';
 import { setIsPanelVisible } from '../redux/actions/actions';
 
 const Sidebar = () => {
-    const isPanelVisible = useSelector((state) => state.isPanelVisible);
     const dispatch = useDispatch();
+    const isPanelVisible = useSelector((state) => state.isPanelVisible);
+    const panelData = useSelector((state) => state.panelData);
+
+    const { name } = panelData || {};
 
     const handleHide = () => {
         dispatch(setIsPanelVisible(false));
@@ -17,7 +20,7 @@ const Sidebar = () => {
                 visible={isPanelVisible}
                 onHide={handleHide}
                 className='w-full md:w-20rem lg:w-30rem'>
-                <h2>Sidebar</h2>
+                {name && <h2>{name}</h2>}
                 <p>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                     eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad

@@ -11,7 +11,7 @@ import { setIsPanelVisible } from '../redux/actions/actions';
 
 const Table = ({
     items,
-    handleSubmit/* ,
+    handleSubmit /* ,
     handleSelectionChange,
     showDeleted,
     onShowDeletedItemsClick,
@@ -75,16 +75,17 @@ const Table = ({
         }
     };
 
-    // const handleShow = () => {
-    //     dispatch(setIsPanelVisible(true));
-    // };
-    const buttonBodyTemplate = () => {
+    const handleShow = (rowData) => {
+        console.log('bb ~  ~ file: table.js:79 ~ handleShow ~ rowData:', rowData);
+        dispatch(setIsPanelVisible(true, rowData));
+    };
+    const buttonBodyTemplate = (rowData) => {
         return (
             <Button
                 type='button'
-                icon='pi pi-trash'
-                className='p-button-rounded p-button-danger'
-                onClick={() => dispatch(setIsPanelVisible(true))}
+                icon='pi pi-info-circle'
+                className='p-button-rounded p-button-warning'
+                onClick={() => handleShow(rowData)}
             />
         );
     };

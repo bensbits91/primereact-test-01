@@ -14,7 +14,8 @@ import {
 // initial state for redux store
 const initialState = {
     items: [], // todo: better name for the items
-    isPanelVisible: false
+    isPanelVisible: false,
+    panelData: null,
 };
 
 // todo: move to separate file ???
@@ -100,7 +101,8 @@ export default function (state = initialState, action) {
         case SET_IS_PANEL_VISIBLE:
             return {
                 ...state,
-                isPanelVisible: action.payload
+                isPanelVisible: action.payload.visible,
+                panelData: action.payload.panelData
             };
 
         default:

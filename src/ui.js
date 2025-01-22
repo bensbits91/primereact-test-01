@@ -35,12 +35,12 @@ const Ui = ({ items }) => {
         }
     };
 
-    const onShowDeletedItemsClick = () => {
+    const onShowDeletedItemsClick = () => { // todo: move to table-menu.js?
         dispatch(readItemsAction(!showDeleted));
         setShowDeleted(!showDeleted);
     };
 
-    const handleSelectionChange = (selectedIds) => {
+    const handleSelectionChange = (selectedIds) => { // todo: move to table.js?
         setSelectedIds(selectedIds);
     };
 
@@ -51,8 +51,8 @@ const Ui = ({ items }) => {
         }
     };
 
-    const emptyItem = { name: '', type: undefined, status: undefined, rating: 0 };
-    const itemsWithEmptyRow = [...items, emptyItem];
+    const emptyItem = { name: '', type: undefined, status: undefined, rating: 0 }; // todo: move to table.js?
+    const itemsWithEmptyRow = [...items, emptyItem]; // todo: move to table.js?
 
     return (
         <>
