@@ -5,19 +5,25 @@ import {
     createItemAction,
     readItemsAction,
     updateItemAction,
-    deleteItemsAction
+    deleteItemsAction,
+    // getTmdbDataAction // todo: this is temporary for testing
 } from './redux/actions/actions';
+import Sidebar from './components/sidebar';
 import Table from './components/table';
+import TableMenu from './components/table-menu';
+import 'primereact/resources/themes/lara-dark-teal/theme.css';
+import 'primeicons/primeicons.css';
 // import './ui.css';
 
 const Ui = ({ items }) => {
-    const [showDeleted, setShowDeleted] = useState(false);
-    const [selectedIds, setSelectedIds] = useState([]);
+    const [showDeleted, setShowDeleted] = useState(false); // todo: if this will be shared with other components, move to redux store
+    const [selectedIds, setSelectedIds] = useState([]); // todo: if this will be shared with other components, move to redux store
 
     const dispatch = useDispatch();
 
     useEffect(() => {
         dispatch(readItemsAction());
+        // dispatch(getTmdbDataAction()); // todo: this is temporary for testing
     }, [dispatch]);
 
     const handleSubmit = (oldRowData, newRowData) => {
@@ -51,6 +57,8 @@ const Ui = ({ items }) => {
     return (
         <>
             <h1>Things</h1>
+            <Sidebar />
+            <TableMenu />
             <Table
                 items={itemsWithEmptyRow}
                 handleSubmit={handleSubmit}

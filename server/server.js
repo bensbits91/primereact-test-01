@@ -8,8 +8,6 @@ const {
 
 fastify.register(require('@fastify/static'), {
     root: path.join(__dirname, '..', 'dist')
-    // prefix: '/public/', // optional: default '/'
-    // constraints: { host: 'example.com' } // optional: default {}
 });
 
 // connect to mongodb atlas

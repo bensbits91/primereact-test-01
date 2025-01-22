@@ -5,6 +5,43 @@ import {
     deleteItemsFromApi
 } from '../../api';
 
+import { getTmdbData } from '../../external-apis/tmdb';
+
+export const GET_TMDB_DATA_BEGIN = 'Begin fetching TMDB data';
+export const GET_TMDB_DATA_SUCCESS = 'TMDB data fetched successfully';
+export const GET_TMDB_DATA_FAILURE = 'Failed to fetch TMDB data';
+
+export const getTmdbDataBegin = () => ({
+    type: GET_TMDB_DATA_BEGIN
+});
+export const getTmdbDataSuccess = (data) => ({
+    type: GET_TMDB_DATA_SUCCESS,
+    payload: { data }
+});
+export const getTmdbDataFailure = (errors) => ({
+    type: GET_TMDB_DATA_FAILURE,
+    payload: { errors }
+});
+
+export const getTmdbDataAction = () => {
+    return (dispatch) => {
+        dispatch(getTmdbDataBegin());
+        getTmdbData()
+            .then((data) => {
+                console.log('bb ~  ~ file: actions.js:31 ~ .then ~ data:', data);
+                dispatch(getTmdbDataSuccess(data));
+            })
+            .catch((error) => dispatch(getTmdbDataFailure(error)));
+    };
+};
+
+export const SET_IS_PANEL_VISIBLE = 'Show or hide panel';
+
+export const setIsPanelVisible = (visible) => ({
+    type: SET_IS_PANEL_VISIBLE,
+    payload: visible
+});
+
 export const CREATE_ITEM_SUCCESS = 'Item created successfully';
 export const CREATE_ITEM_FAILURE = 'Failed to create item';
 export const FETCH_ITEMS_BEGIN = 'Begin fetching items';

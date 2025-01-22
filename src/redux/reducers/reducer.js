@@ -7,15 +7,29 @@ import {
     UPDATE_ITEM_SUCCESS,
     UPDATE_ITEM_FAILURE,
     DELETE_ITEMS_SUCCESS,
-    DELETE_ITEMS_FAILURE
+    DELETE_ITEMS_FAILURE,
+    SET_IS_PANEL_VISIBLE
 } from '../actions/actions';
 
 // initial state for redux store
 const initialState = {
-    items: [] // todo: better name for the items
+    items: [], // todo: better name for the items
+    isPanelVisible: false
 };
 
-// reducer function
+// todo: move to separate file ???
+// todo: learn about combineReducers
+// reducer function to show or hide the sidebar
+// const visibleReducer = (state = false, action) => {
+//     switch (action.type) {
+//         case SET_VISIBLE:
+//             return action.payload;
+//         default:
+//             return state;
+//     }
+// };
+
+// main reducer function
 export default function (state = initialState, action) {
     switch (action.type) {
         case CREATE_ITEM_SUCCESS: {
@@ -81,6 +95,12 @@ export default function (state = initialState, action) {
             return {
                 ...state,
                 errors: action.payload.errors
+            };
+
+        case SET_IS_PANEL_VISIBLE:
+            return {
+                ...state,
+                isPanelVisible: action.payload
             };
 
         default:

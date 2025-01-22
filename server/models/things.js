@@ -2,6 +2,15 @@ const { Int32 } = require('bson');
 const { Schema, model } = require('mongoose');
 const { types, statuses } = require('../../constants');
 
+const extneralDataSchema = new Schema(
+    {
+        id: { type: String },
+        data: { type: Schema.Types.Mixed }
+    },
+    { _id: false },
+    { timestamps: true }
+);
+
 const thingSchema = new Schema(
     {
         id: { type: String, required: true },
@@ -9,8 +18,7 @@ const thingSchema = new Schema(
         type: { type: String, enum: [...types] },
         status: { type: String, enum: [...statuses] },
         rating: { type: Int32, min: 0, max: 10 },
-        externalId: { type: String },
-        externalData: { type: Schema.Types.Mixed },
+        external: extneralDataSchema,
         isSoftDeleted: { type: Boolean, default: false, index: true }
     },
     { timestamps: true }
