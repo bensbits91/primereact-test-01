@@ -84,7 +84,7 @@ const Table = ({
                 type='button'
                 icon='pi pi-trash'
                 className='p-button-rounded p-button-danger'
-                onClick={dispatch(setIsPanelVisible(true))}
+                onClick={() => dispatch(setIsPanelVisible(true))}
             />
         );
     };
