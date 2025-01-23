@@ -22,7 +22,7 @@ const Sidebar = () => {
         ) {
             dispatch(getTmdbDataAction(name));
         }
-    }, [isSidebarVisible, externalData, sidebarDataOptions]);
+    }, [isSidebarVisible, sidebarData, sidebarDataOptions]);
 
     const handleHide = () => {
         dispatch(setIsSidebarVisible(false, null));

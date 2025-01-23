@@ -1,4 +1,5 @@
 const { Thing } = require('./models/things');
+const { getTmdbData } = require('./external-apis/tmdb');
 
 const fetchItems = async (request, reply) => {
     const showDeletedQueryValue =
@@ -46,4 +47,14 @@ const deleteItems = async (request, reply) => {
     }
 };
 
-module.exports = { fetchItems, addItem, updateItem, deleteItems };
+const getTmdbDataController = async (request, reply) => {
+    const { searchTerm } = request.query;
+    try {
+        const data = await getTmdbData(searchTerm);
+        reply.send(data);
+    } catch (error) {
+        reply.status(500).send({ error: 'Failed to fetch data from TMDB API' });
+    }
+};
+
+module.exports = { fetchItems, addItem, updateItem, deleteItems, getTmdbDataController };

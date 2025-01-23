@@ -120,7 +120,7 @@ export default function (state = initialState, action) {
                 ...state,
                 loading: false,
                 errors: null,
-                sidebarDataOptions: action.payload.data.results
+                sidebarDataOptions: action.payload.data.data.results
             };
         case GET_TMDB_DATA_FAILURE:
             return {
