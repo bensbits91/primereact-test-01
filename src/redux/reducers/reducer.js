@@ -105,7 +105,8 @@ export default function (state = initialState, action) {
             return {
                 ...state,
                 isSidebarVisible: action.payload.visible,
-                sidebarData: action.payload.sidebarData
+                sidebarData: action.payload.sidebarData,
+                sidebarDataOptions: action.payload.sidebarDataOptions
             };
 
         case GET_TMDB_DATA_BEGIN:

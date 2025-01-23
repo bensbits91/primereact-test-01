@@ -6,6 +6,8 @@ const SidebarDetails = ({ thing }) => {
     const { overview, poster_path } = data;
     const posterPath = `https://image.tmdb.org/t/p/w92${poster_path}`;
 
+    // todo: add more details
+
     return (
         <div>
             <img src={posterPath} alt={name} />

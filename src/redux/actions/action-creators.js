@@ -67,7 +67,7 @@ export const getTmdbDataFailure = (errors) => ({
     payload: { errors }
 });
 
-export const setIsSidebarVisible = (visible, sidebarData) => ({
+export const setIsSidebarVisible = (visible, sidebarData, sidebarDataOptions) => ({
     type: SET_IS_SIDEBAR_VISIBLE,
-    payload: { visible, sidebarData }
+    payload: { visible, sidebarData, sidebarDataOptions }
 });

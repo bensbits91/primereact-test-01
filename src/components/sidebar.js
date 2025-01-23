@@ -25,7 +25,7 @@ const Sidebar = () => {
     }, [isSidebarVisible, externalData, sidebarDataOptions]);
 
     const handleHide = () => {
-        dispatch(setIsSidebarVisible(false));
+        dispatch(setIsSidebarVisible(false, null));
     };
 
     return (
@@ -38,10 +38,10 @@ const Sidebar = () => {
                     onHide={handleHide}>
                     {name && <h2>{name}</h2>}
                     <div>
-                        {!sidebarData.externalData && sidebarDataOptions && (
+                        {sidebarData && !sidebarData.externalData && sidebarDataOptions && (
                             <SidebarOptions dataOptions={sidebarDataOptions} />
                         )}
-                        {sidebarData.externalData && (
+                        {sidebarData && sidebarData.externalData && (
                             <SidebarDetails thing={sidebarData} />
                         )}
                     </div>
