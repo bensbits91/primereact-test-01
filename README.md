@@ -6,3 +6,4 @@
 * unit testing
 * styling
 * paginate list view for sidebarDataOptions
+* accessibility

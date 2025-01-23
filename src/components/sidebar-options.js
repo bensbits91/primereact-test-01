@@ -41,7 +41,13 @@ const SidebarOptions = ({ dataOptions }) => {
     return (
         <div className='dataview-demo'>
             <div className='card'>
-                <DataView value={dataOptions} layout='grid' itemTemplate={itemTemplate} />
+                <DataView
+                    value={dataOptions}
+                    layout='list'
+                    itemTemplate={itemTemplate}
+                    paginator
+                    rows={5}
+                />
             </div>
         </div>
     );
