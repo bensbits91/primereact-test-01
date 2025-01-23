@@ -22,7 +22,6 @@ const Ui = ({ items }) => {
 
     useEffect(() => {
         dispatch(readItemsAction());
-        // dispatch(getTmdbDataAction()); // todo: this is temporary for testing
     }, [dispatch]);
 
     const handleSubmit = (oldRowData, newRowData) => {
