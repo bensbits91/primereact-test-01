@@ -6,13 +6,17 @@ import {
     readItemsAction,
     updateItemAction,
     deleteItemsAction
-} from './redux/actions/actions';
+} from './redux/actions/action-dispatchers';
+import Sidebar from './components/sidebar';
 import Table from './components/table';
+import TableMenu from './components/table-menu';
+import 'primereact/resources/themes/lara-dark-teal/theme.css';
+import 'primeicons/primeicons.css';
 // import './ui.css';
 
 const Ui = ({ items }) => {
-    const [showDeleted, setShowDeleted] = useState(false);
-    const [selectedIds, setSelectedIds] = useState([]);
+    const [showDeleted, setShowDeleted] = useState(false); // todo: if this will be shared with other components, move to redux store
+    const [selectedIds, setSelectedIds] = useState([]); // todo: if this will be shared with other components, move to redux store
 
     const dispatch = useDispatch();
 
@@ -29,12 +33,12 @@ const Ui = ({ items }) => {
         }
     };
 
-    const onShowDeletedItemsClick = () => {
+    const onShowDeletedItemsClick = () => { // todo: move to table-menu.js?
         dispatch(readItemsAction(!showDeleted));
         setShowDeleted(!showDeleted);
     };
 
-    const handleSelectionChange = (selectedIds) => {
+    const handleSelectionChange = (selectedIds) => { // todo: move to table.js?
         setSelectedIds(selectedIds);
     };
 
@@ -45,12 +49,14 @@ const Ui = ({ items }) => {
         }
     };
 
-    const emptyItem = { name: '', type: undefined, status: undefined, rating: 0 };
-    const itemsWithEmptyRow = [...items, emptyItem];
+    const emptyItem = { name: '', type: undefined, status: undefined, rating: 0 }; // todo: move to table.js?
+    const itemsWithEmptyRow = [...items, emptyItem]; // todo: move to table.js?
 
     return (
         <>
             <h1>Things</h1>
+            <Sidebar />
+            <TableMenu />
             <Table
                 items={itemsWithEmptyRow}
                 handleSubmit={handleSubmit}

@@ -1,3 +1,5 @@
 .cache
+.env.local
+.vscode
 dist
 node_modules

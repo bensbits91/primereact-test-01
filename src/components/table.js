@@ -1,20 +1,24 @@
 import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
 import { InputText } from 'primereact/inputtext';
 import { Dropdown } from 'primereact/dropdown';
 import { Rating } from 'primereact/rating';
-import 'primereact/resources/themes/lara-dark-teal/theme.css';
+import { Button } from 'primereact/button';
 import { types, statuses } from '../../constants';
+import { setIsSidebarVisible } from '../redux/actions/action-creators';
 
 const Table = ({
     items,
-    handleSubmit,
+    handleSubmit /* ,
     handleSelectionChange,
     showDeleted,
     onShowDeletedItemsClick,
-    handleDeleteItems
+    handleDeleteItems */
 }) => {
+    const dispatch = useDispatch();
+
     const textEditor = (options) => {
         return (
             <InputText
@@ -67,8 +71,23 @@ const Table = ({
         const { rowData, newRowData } = e;
         const wasChanged = JSON.stringify(rowData) !== JSON.stringify(newRowData);
         if (wasChanged) {
-            handleSubmit(e.rowData, e.newRowData);
+            handleSubmit(rowData, newRowData);
         }
+    };
+
+    const handleShow = (rowData) => {
+        console.log('bb ~  ~ file: table.js:79 ~ handleShow ~ rowData:', rowData);
+        dispatch(setIsSidebarVisible(true, rowData));
+    };
+    const buttonBodyTemplate = (rowData) => {
+        return (
+            <Button
+                type='button'
+                icon='pi pi-info-circle'
+                className='p-button-rounded p-button-warning'
+                onClick={() => handleShow(rowData)}
+            />
+        );
     };
 
     return (
@@ -105,6 +124,9 @@ const Table = ({
                 body={ratingBodyTemplate}
                 editor={(options) => ratingEditor(options)}
                 onCellEditComplete={onCellEditComplete}></Column>
+            <Column
+                header='Details'
+                body={buttonBodyTemplate}></Column>
         </DataTable>
     );
 };

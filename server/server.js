@@ -3,17 +3,15 @@ const fastify = require('fastify')({ logger: true });
 const routes = require('./routes');
 const path = require('path');
 const {
-    parsed: { MONGO_ATLAS_PW }
-} = require('dotenv').config();
+    parsed: { DB_USER, DB_PW, DB_DOMAIN, DB_PROJECT }
+} = require('dotenv').config({ path: '.env.local' });
 
 fastify.register(require('@fastify/static'), {
     root: path.join(__dirname, '..', 'dist')
-    // prefix: '/public/', // optional: default '/'
-    // constraints: { host: 'example.com' } // optional: default {}
 });
 
 // connect to mongodb atlas
-const connectionString = `mongodb+srv://spambrooks:${MONGO_ATLAS_PW}@cluster4benspersonalpro.orplk.mongodb.net/?retryWrites=true&w=majority&appName=Cluster4BensPersonalProject01`;
+const connectionString = `mongodb+srv://${DB_USER}:${DB_PW}@${DB_DOMAIN}.orplk.mongodb.net/?retryWrites=true&w=majority&appName=${DB_PROJECT}`;
 mongoose
     .connect(connectionString, {})
     .then(() => console.log('MongoDB connected'))
