@@ -4,7 +4,7 @@ const routes = require('./routes');
 const path = require('path');
 const {
     parsed: { DB_USER, DB_PW, DB_DOMAIN, DB_PROJECT }
-} = require('dotenv').config();
+} = require('dotenv').config({ path: '.env.local' });
 
 fastify.register(require('@fastify/static'), {
     root: path.join(__dirname, '..', 'dist')
