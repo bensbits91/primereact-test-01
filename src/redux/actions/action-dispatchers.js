@@ -61,10 +61,10 @@ export const deleteItemsAction = (ids) => {
     };
 };
 
-export const getTmdbDataAction = (searchTerm) => {
+export const getTmdbDataAction = (searchTerm, type) => {
     return (dispatch) => {
         dispatch(getTmdbDataBegin());
-        fetchItemsFromTmdb(searchTerm)
+        fetchItemsFromTmdb(searchTerm, type)
             .then((data) => {
                 dispatch(getTmdbDataSuccess(data));
             })

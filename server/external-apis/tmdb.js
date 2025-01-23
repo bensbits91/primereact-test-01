@@ -3,8 +3,13 @@ const {
     parsed: { TMDB_BASE_URL, TMDB_TOKEN }
 } = require('dotenv').config({ path: '.env.local' });
 
-const getTmdbData = async (searchTerm) => {
-    const url = `${TMDB_BASE_URL}/search/tv?query=${searchTerm}&include_adult=false&language=en-US&page=1`;
+const getTmdbData = async (searchTerm, type = 'multi') => {
+    const makeSafeQueryString = (str) => encodeURIComponent(str.toLowerCase());
+    const safeType = makeSafeQueryString(type);
+    const safeSearchTerm = makeSafeQueryString(searchTerm);
+
+    const url = `${TMDB_BASE_URL}/search/${safeType}?query=${safeSearchTerm}&include_adult=false&language=en-US&page=1`;
+    console.log('bb ~ getTmdbData ~ url:', url);
     const options = {
         method: 'GET',
         headers: {
