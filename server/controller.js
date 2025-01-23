@@ -48,9 +48,9 @@ const deleteItems = async (request, reply) => {
 };
 
 const getTmdbDataController = async (request, reply) => {
-    const { searchTerm } = request.query;
+    const { searchTerm, type } = request.query;
     try {
-        const data = await getTmdbData(searchTerm);
+        const data = await getTmdbData(searchTerm, type);
         reply.send(data);
     } catch (error) {
         reply.status(500).send({ error: 'Failed to fetch data from TMDB API' });

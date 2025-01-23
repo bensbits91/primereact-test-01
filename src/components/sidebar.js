@@ -12,7 +12,7 @@ const Sidebar = () => {
     const sidebarData = useSelector((state) => state.sidebarData);
     const sidebarDataOptions = useSelector((state) => state.sidebarDataOptions);
 
-    const { name, externalData } = sidebarData || {};
+    const { name, type, externalData } = sidebarData || {};
 
     useEffect(() => {
         if (
@@ -20,7 +20,7 @@ const Sidebar = () => {
             !externalData &&
             !sidebarDataOptions
         ) {
-            dispatch(getTmdbDataAction(name));
+            dispatch(getTmdbDataAction(name, type));
         }
     }, [isSidebarVisible, sidebarData, sidebarDataOptions]);
 
