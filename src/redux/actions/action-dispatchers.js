@@ -4,9 +4,9 @@ import {
     fetchItemsFromApi,
     createItemInApi,
     updateItemInApi,
-    deleteItemsFromApi
+    deleteItemsFromApi,
+    fetchItemsFromTmdb
 } from '../../api';
-import { getTmdbData } from '../../external-apis/tmdb';
 
 import {
     createItemSuccess,
@@ -64,9 +64,8 @@ export const deleteItemsAction = (ids) => {
 export const getTmdbDataAction = (searchTerm) => {
     return (dispatch) => {
         dispatch(getTmdbDataBegin());
-        getTmdbData(searchTerm)
+        fetchItemsFromTmdb(searchTerm)
             .then((data) => {
-                console.log('bb ~  ~ file: actions.js:118 ~ .then ~ data:', data);
                 dispatch(getTmdbDataSuccess(data));
             })
             .catch((error) => dispatch(getTmdbDataFailure(error)));

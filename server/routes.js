@@ -1,4 +1,10 @@
-const { fetchItems, addItem, updateItem, deleteItems } = require('./controller');
+const {
+    fetchItems,
+    addItem,
+    updateItem,
+    deleteItems,
+    getTmdbDataController
+} = require('./controller');
 
 const routes = [
     {
@@ -20,6 +26,11 @@ const routes = [
         method: 'DELETE',
         url: '/api/things/:ids',
         handler: deleteItems
+    },
+    {
+        method: 'GET',
+        url: '/api/tmdb/search',
+        handler: getTmdbDataController
     }
 ];
 

@@ -15,3 +15,7 @@ export const updateItemInApi = (item) => {
 export const deleteItemsFromApi = (ids) => {
     return axios.delete(`/api/things/${ids}`);
 };
+
+export const fetchItemsFromTmdb = (searchTerm) => {
+    return axios.get('/api/tmdb/search', { params: { searchTerm } });
+};

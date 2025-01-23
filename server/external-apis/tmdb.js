@@ -1,9 +1,9 @@
-import axios from 'axios';
+const axios = require('axios');
+const {
+    parsed: { TMDB_BASE_URL, TMDB_TOKEN }
+} = require('dotenv').config({ path: '.env.local' });
 
-const TMDB_BASE_URL = process.env.REACT_APP_TMDB_BASE_URL;
-const TMDB_TOKEN = process.env.REACT_APP_TMDB_TOKEN;
-
-export const getTmdbData = async (searchTerm) => {
+const getTmdbData = async (searchTerm) => {
     const url = `${TMDB_BASE_URL}/search/tv?query=${searchTerm}&include_adult=false&language=en-US&page=1`;
     const options = {
         method: 'GET',
@@ -20,3 +20,5 @@ export const getTmdbData = async (searchTerm) => {
         throw error;
     }
 };
+
+module.exports = { getTmdbData };
