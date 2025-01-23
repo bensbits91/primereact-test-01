@@ -7,7 +7,7 @@ import { Dropdown } from 'primereact/dropdown';
 import { Rating } from 'primereact/rating';
 import { Button } from 'primereact/button';
 import { types, statuses } from '../../constants';
-import { setIsPanelVisible } from '../redux/actions/actions';
+import { setIsSidebarVisible } from '../redux/actions/action-creators';
 
 const Table = ({
     items,
@@ -77,7 +77,7 @@ const Table = ({
 
     const handleShow = (rowData) => {
         console.log('bb ~  ~ file: table.js:79 ~ handleShow ~ rowData:', rowData);
-        dispatch(setIsPanelVisible(true, rowData));
+        dispatch(setIsSidebarVisible(true, rowData));
     };
     const buttonBodyTemplate = (rowData) => {
         return (

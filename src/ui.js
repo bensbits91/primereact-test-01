@@ -5,9 +5,8 @@ import {
     createItemAction,
     readItemsAction,
     updateItemAction,
-    deleteItemsAction,
-    // getTmdbDataAction // todo: this is temporary for testing
-} from './redux/actions/actions';
+    deleteItemsAction
+} from './redux/actions/action-dispatchers';
 import Sidebar from './components/sidebar';
 import Table from './components/table';
 import TableMenu from './components/table-menu';

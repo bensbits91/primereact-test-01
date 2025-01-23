@@ -1,33 +1,52 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { setIsSidebarVisible } from '../redux/actions/action-creators'; // todo: should this have a thunk in action-dispatchers.js?
+import { getTmdbDataAction } from '../redux/actions/action-dispatchers';
 import { Sidebar as PrimeSideBar } from 'primereact/sidebar';
-import { setIsPanelVisible } from '../redux/actions/actions';
+import SidebarOptions from './sidebar-options';
+import SidebarDetails from './sidebar-details';
 
 const Sidebar = () => {
     const dispatch = useDispatch();
-    const isPanelVisible = useSelector((state) => state.isPanelVisible);
-    const panelData = useSelector((state) => state.panelData);
+    const isSidebarVisible = useSelector((state) => state.isSidebarVisible);
+    const sidebarData = useSelector((state) => state.sidebarData);
+    const sidebarDataOptions = useSelector((state) => state.sidebarDataOptions);
 
-    const { name } = panelData || {};
+    const { name, externalData } = sidebarData || {};
+
+    useEffect(() => {
+        if (
+            isSidebarVisible &&
+            !externalData &&
+            !sidebarDataOptions
+        ) {
+            dispatch(getTmdbDataAction(name));
+        }
+    }, [isSidebarVisible, externalData, sidebarDataOptions]);
 
     const handleHide = () => {
-        dispatch(setIsPanelVisible(false));
+        dispatch(setIsSidebarVisible(false));
     };
 
     return (
         <div className='card flex justify-content-center'>
-            <PrimeSideBar
-                visible={isPanelVisible}
-                onHide={handleHide}
-                className='w-full md:w-20rem lg:w-30rem'>
-                {name && <h2>{name}</h2>}
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                    eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-                    minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                    aliquip ex ea commodo consequat.
-                </p>
-            </PrimeSideBar>
+            {((sidebarData && sidebarData.externalData) || sidebarDataOptions) && (
+                <PrimeSideBar
+                    visible={isSidebarVisible}
+                    position='right'
+                    // className='w-full md:w-20rem lg:w-50rem'
+                    onHide={handleHide}>
+                    {name && <h2>{name}</h2>}
+                    <div>
+                        {!sidebarData.externalData && sidebarDataOptions && (
+                            <SidebarOptions dataOptions={sidebarDataOptions} />
+                        )}
+                        {sidebarData.externalData && (
+                            <SidebarDetails thing={sidebarData} />
+                        )}
+                    </div>
+                </PrimeSideBar>
+            )}
         </div>
     );
 };
