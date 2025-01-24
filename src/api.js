@@ -19,3 +19,7 @@ export const deleteItemsFromApi = (ids) => {
 export const fetchItemsFromTmdb = (searchTerm, type) => {
     return axios.get('/api/tmdb/search', { params: { searchTerm, type } });
 };
+
+export const fetchItemsFromGoogleBooks = (searchTerm) => {
+    return axios.get('/api/googlebooks/search', { params: { searchTerm } });
+};

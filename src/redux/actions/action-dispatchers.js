@@ -5,7 +5,8 @@ import {
     createItemInApi,
     updateItemInApi,
     deleteItemsFromApi,
-    fetchItemsFromTmdb
+    fetchItemsFromTmdb,
+    fetchItemsFromGoogleBooks
 } from '../../api';
 
 import {
@@ -18,6 +19,9 @@ import {
     updateItemFailure,
     deleteItemsSuccess,
     deleteItemsFailure,
+    getGoogleBooksDataBegin,
+    getGoogleBooksDataSuccess,
+    getGoogleBooksDataFailure,
     getTmdbDataBegin,
     getTmdbDataSuccess,
     getTmdbDataFailure
@@ -69,5 +73,16 @@ export const getTmdbDataAction = (searchTerm, type) => {
                 dispatch(getTmdbDataSuccess(data));
             })
             .catch((error) => dispatch(getTmdbDataFailure(error)));
+    };
+};
+
+export const getGoogleBooksDataAction = (searchTerm) => {
+    return (dispatch) => {
+        dispatch(getGoogleBooksDataBegin());
+        fetchItemsFromGoogleBooks(searchTerm)
+            .then((data) => {
+                dispatch(getGoogleBooksDataSuccess(data));
+            })
+            .catch((error) => dispatch(getGoogleBooksDataFailure(error)));
     };
 };

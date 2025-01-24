@@ -1,5 +1,6 @@
 const { Thing } = require('./models/things');
 const { getTmdbData } = require('./external-apis/tmdb');
+const { getGoogleBooksData } = require('./external-apis/google');
 
 const fetchItems = async (request, reply) => {
     const showDeletedQueryValue =
@@ -57,4 +58,21 @@ const getTmdbDataController = async (request, reply) => {
     }
 };
 
-module.exports = { fetchItems, addItem, updateItem, deleteItems, getTmdbDataController };
+const getGoogleBooksDataController = async (request, reply) => {
+    const { searchTerm } = request.query;
+    try {
+        const data = await getGoogleBooksData(searchTerm);
+        reply.send(data);
+    } catch (error) {
+        reply.status(500).send({ error: 'Failed to fetch data from Google Books API' });
+    }
+};
+
+module.exports = {
+    fetchItems,
+    addItem,
+    updateItem,
+    deleteItems,
+    getTmdbDataController,
+    getGoogleBooksDataController
+};

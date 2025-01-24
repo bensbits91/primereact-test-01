@@ -1,7 +1,10 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { setIsSidebarVisible } from '../redux/actions/action-creators'; // todo: should this have a thunk in action-dispatchers.js?
-import { getTmdbDataAction } from '../redux/actions/action-dispatchers';
+import {
+    getTmdbDataAction,
+    getGoogleBooksDataAction
+} from '../redux/actions/action-dispatchers';
 import { Sidebar as PrimeSideBar } from 'primereact/sidebar';
 import SidebarOptions from './sidebar-options';
 import SidebarDetails from './sidebar-details';
@@ -9,18 +12,24 @@ import SidebarDetails from './sidebar-details';
 const Sidebar = () => {
     const dispatch = useDispatch();
     const isSidebarVisible = useSelector((state) => state.isSidebarVisible);
-    const sidebarData = useSelector((state) => state.sidebarData);
-    const sidebarDataOptions = useSelector((state) => state.sidebarDataOptions);
+    const sidebarData = useSelector((state) => state.sidebarData); // todo: rename to selectedThing
+    const sidebarDataOptions = useSelector((state) => state.sidebarDataOptions); // todo: rename to thingSearchResults
 
     const { name, type, externalData } = sidebarData || {};
 
     useEffect(() => {
-        if (
-            isSidebarVisible &&
-            !externalData &&
-            !sidebarDataOptions
-        ) {
-            dispatch(getTmdbDataAction(name, type));
+        if (isSidebarVisible && !externalData && !sidebarDataOptions) {
+            switch (type) {
+                case 'Book':
+                    dispatch(getGoogleBooksDataAction(name));
+                    break;
+                case 'Movie':
+                case 'TV':
+                    dispatch(getTmdbDataAction(name, type));
+                    break;
+                default:
+                    console.log('unknown type');
+            }
         }
     }, [isSidebarVisible, sidebarData, sidebarDataOptions]);
 
@@ -38,9 +47,11 @@ const Sidebar = () => {
                     onHide={handleHide}>
                     {name && <h2>{name}</h2>}
                     <div>
-                        {sidebarData && !sidebarData.externalData && sidebarDataOptions && (
-                            <SidebarOptions dataOptions={sidebarDataOptions} />
-                        )}
+                        {sidebarData &&
+                            !sidebarData.externalData &&
+                            sidebarDataOptions && (
+                                <SidebarOptions dataOptions={sidebarDataOptions} />
+                            )}
                         {sidebarData && sidebarData.externalData && (
                             <SidebarDetails thing={sidebarData} />
                         )}
