@@ -144,7 +144,7 @@ export default function (state = initialState, action) {
                 ...state,
                 loading: false,
                 errors: null,
-                sidebarDataOptions: action.payload.data.data.items // todo: check this
+                sidebarDataOptions: action.payload.data.data.items
             };
         case GET_GOOGLE_BOOKS_DATA_FAILURE:
             return {

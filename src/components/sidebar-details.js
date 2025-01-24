@@ -14,14 +14,12 @@ const SidebarDetails = ({ thing }) => {
             thingName = data.volumeInfo.title;
             thingDescription = data.volumeInfo.description;
             break;
-
         case 'Movie':
         case 'TV':
             imgPath = `https://image.tmdb.org/t/p/w92${data.poster_path}`;
             thingName = data.title;
             thingDescription = data.overview;
             break;
-
         default:
             console.log('unknown type');
     }
