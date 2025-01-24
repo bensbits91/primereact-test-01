@@ -1,14 +1,14 @@
 import React from 'react';
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
-import { InputText } from 'primereact/inputtext';
-import { Dropdown } from 'primereact/dropdown';
-import { types, statuses } from '../../constants';
-import statusBodyTemplate from './body-templates/status';
-import typeBodyTemplate from './body-templates/type';
-import ratingBodyTemplate from './body-templates/rating';
-import showSidebarButtonBodyTemplate from './body-templates/show-sidebar-button';
-import { Rating } from 'primereact/rating';
+import StatusViewer from './viewers/status';
+import TypeViewer from './viewers/type';
+import RatingViewer from './viewers/rating';
+import ShowSidebarButton from './viewers/show-sidebar-button';
+import TextEditor from './editors/text';
+import TypeEditor from './editors/type';
+import StatusEditor from './editors/status';
+import RatingEditor from './editors/rating';
 
 const Table = ({
     items,
@@ -18,50 +18,6 @@ const Table = ({
     onShowDeletedItemsClick,
     handleDeleteItems */
 }) => {
-    // todo: move editors to ./editors/...
-    const textEditor = (options) => {
-        return (
-            <InputText
-                type='text'
-                value={options.value}
-                onChange={(e) => options.editorCallback(e.target.value)}
-                onKeyDown={(e) => e.stopPropagation()}
-            />
-        );
-    };
-
-    const typeEditor = (options) => {
-        return (
-            <Dropdown
-                value={options.value}
-                onChange={(e) => options.editorCallback(e.target.value)}
-                placeholder='Select a type'
-                options={types}
-            />
-        );
-    };
-
-    const statusEditor = (options) => {
-        return (
-            <Dropdown
-                value={options.value}
-                onChange={(e) => options.editorCallback(e.target.value)}
-                options={statuses}
-                placeholder='Select a status'
-            />
-        );
-    };
-
-    const ratingEditor = (options) => {
-        return (
-            <Rating
-                value={options.value}
-                onChange={(e) => options.editorCallback(e.target.value)}
-                stars={10}
-            />
-        );
-    };
-
     const onCellEditComplete = (e) => {
         console.log('bb ~ onCellEditComplete ~ e:', e);
         const { rowData, newRowData } = e;
@@ -85,29 +41,29 @@ const Table = ({
                 field='name'
                 header='Name'
                 sortable={true}
-                editor={(options) => textEditor(options)}
+                editor={(options) => TextEditor(options)}
                 onCellEditComplete={onCellEditComplete}></Column>
             <Column
                 field='type'
                 header='Type'
-                body={typeBodyTemplate}
-                editor={(options) => typeEditor(options)}
+                body={TypeViewer}
+                editor={(options) => TypeEditor(options)}
                 onCellEditComplete={onCellEditComplete}></Column>
             <Column
                 field='status'
                 header='Status'
                 sortable={true}
-                body={statusBodyTemplate}
-                editor={(options) => statusEditor(options)}
+                body={StatusViewer}
+                editor={(options) => StatusEditor(options)}
                 onCellEditComplete={onCellEditComplete}></Column>
             <Column
                 field='rating'
                 header='Rating'
                 sortable={true}
-                body={ratingBodyTemplate}
-                editor={(options) => ratingEditor(options)}
+                body={RatingViewer}
+                editor={(options) => RatingEditor(options)}
                 onCellEditComplete={onCellEditComplete}></Column>
-            <Column header='Details' body={showSidebarButtonBodyTemplate}></Column>
+            <Column header='Details' body={ShowSidebarButton}></Column>
         </DataTable>
     );
 };

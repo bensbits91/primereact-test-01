@@ -21,6 +21,7 @@
 * show related things (e.g. albums by a musician) - discovery
 * add related things to my things - discovery
 * filter search results (e.g. by author or artist)
+* better icons
 
 ## someday / maybe
 * image viewer (for things with multiple images (e.g. music artist) or editions (e.g. book))

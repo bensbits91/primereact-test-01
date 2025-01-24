@@ -1,7 +1,7 @@
 import React from 'react';
 import { Tag } from 'primereact/tag';
 
-const statusBodyTemplate = (item) => {
+const StatusViewer = (item) => {
     const status = item && item.status ? item.status : '';
     let color = '';
     let iconCode = '';
@@ -34,4 +34,4 @@ const statusBodyTemplate = (item) => {
     return <Tag value={status} severity={color} icon={iconCode} />;
 };
 
-export default statusBodyTemplate;
+export default StatusViewer;

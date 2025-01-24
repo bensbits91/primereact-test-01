@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { Button } from 'primereact/button';
 import { setIsSidebarVisible } from '../../redux/actions/action-creators';
 
-const showSidebarButtonBodyTemplate = (rowData) => {
+const ShowSidebarButton = (rowData) => {
     const dispatch = useDispatch();
 
     const handleShow = (rowData) => {
@@ -21,4 +21,4 @@ const showSidebarButtonBodyTemplate = (rowData) => {
     );
 };
 
-export default showSidebarButtonBodyTemplate;
+export default ShowSidebarButton;

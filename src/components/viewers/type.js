@@ -1,6 +1,6 @@
 import React from 'react';
 
-const typeBodyTemplate = (item) => {
+const TypeViewer = (item) => {
     const itemType = item && item.type ? item.type : '';
     let iconCode = '';
     switch (itemType) {
@@ -28,4 +28,4 @@ const typeBodyTemplate = (item) => {
     );
 };
 
-export default typeBodyTemplate;
+export default TypeViewer;
