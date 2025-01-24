@@ -6,7 +6,8 @@ import {
     updateItemInApi,
     deleteItemsFromApi,
     fetchItemsFromTmdb,
-    fetchItemsFromGoogleBooks
+    fetchItemsFromGoogleBooks,
+    fetchItemsFromGiantBomb
 } from '../../api';
 
 import {
@@ -19,6 +20,9 @@ import {
     updateItemFailure,
     deleteItemsSuccess,
     deleteItemsFailure,
+    getGiantBombDataBegin,
+    getGiantBombDataSuccess,
+    getGiantBombDataFailure,
     getGoogleBooksDataBegin,
     getGoogleBooksDataSuccess,
     getGoogleBooksDataFailure,
@@ -84,5 +88,16 @@ export const getGoogleBooksDataAction = (searchTerm) => {
                 dispatch(getGoogleBooksDataSuccess(data));
             })
             .catch((error) => dispatch(getGoogleBooksDataFailure(error)));
+    };
+};
+
+export const getGiantBombDataAction = (searchTerm) => {
+    return (dispatch) => {
+        dispatch(getGiantBombDataBegin());
+        fetchItemsFromGiantBomb(searchTerm)
+            .then((data) => {
+                dispatch(getGiantBombDataSuccess(data));
+            })
+            .catch((error) => dispatch(getGiantBombDataFailure(error)));
     };
 };

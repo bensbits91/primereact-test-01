@@ -8,7 +8,8 @@ const SidebarDetails = ({ thing }) => {
     let thingName = '';
     let thingDescription = '';
 
-    switch (type) { // todo: should I desctructure data in each case?
+    switch (type) {
+        // todo: should I desctructure data in each case?
         case 'Book':
             imgPath = data.volumeInfo.imageLinks.thumbnail;
             thingName = data.volumeInfo.title;
@@ -19,6 +20,11 @@ const SidebarDetails = ({ thing }) => {
             imgPath = `https://image.tmdb.org/t/p/w92${data.poster_path}`;
             thingName = data.title;
             thingDescription = data.overview;
+            break;
+        case 'Video Game':
+            imgPath = data.image.thumb_url;
+            thingName = data.name;
+            thingDescription = data.description || data.deck;
             break;
         default:
             console.log('unknown type');

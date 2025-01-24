@@ -1,6 +1,7 @@
 const { Thing } = require('./models/things');
 const { getTmdbData } = require('./external-apis/tmdb');
 const { getGoogleBooksData } = require('./external-apis/google');
+const { getGiantBombData } = require('./external-apis/giantbomb');
 
 const fetchItems = async (request, reply) => {
     const showDeletedQueryValue =
@@ -68,11 +69,22 @@ const getGoogleBooksDataController = async (request, reply) => {
     }
 };
 
+const getGiantBombDataController = async (request, reply) => {
+    const { searchTerm } = request.query;
+    try {
+        const data = await getGiantBombData(searchTerm);
+        reply.send(data);
+    } catch (error) {
+        reply.status(500).send({ error: 'Failed to fetch data from Google Books API' });
+    }
+};
+
 module.exports = {
     fetchItems,
     addItem,
     updateItem,
     deleteItems,
     getTmdbDataController,
-    getGoogleBooksDataController
+    getGoogleBooksDataController,
+    getGiantBombDataController
 };

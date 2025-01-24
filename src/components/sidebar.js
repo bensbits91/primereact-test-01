@@ -3,7 +3,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { setIsSidebarVisible } from '../redux/actions/action-creators'; // todo: should this have a thunk in action-dispatchers.js?
 import {
     getTmdbDataAction,
-    getGoogleBooksDataAction
+    getGoogleBooksDataAction,
+    getGiantBombDataAction
 } from '../redux/actions/action-dispatchers';
 import { Sidebar as PrimeSideBar } from 'primereact/sidebar';
 import SidebarOptions from './sidebar-options';
@@ -26,6 +27,9 @@ const Sidebar = () => {
                 case 'Movie':
                 case 'TV':
                     dispatch(getTmdbDataAction(name, type));
+                    break;
+                case 'Video Game':
+                    dispatch(getGiantBombDataAction(name));
                     break;
                 default:
                     console.log('unknown type');

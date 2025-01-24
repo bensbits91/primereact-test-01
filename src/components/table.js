@@ -67,7 +67,7 @@ const Table = ({
     };
 
     const onCellEditComplete = (e) => {
-        console.log('bb ~  ~ file: table.js:32 ~ onCellEditComplete ~ e:', e);
+        console.log('bb ~ onCellEditComplete ~ e:', e);
         const { rowData, newRowData } = e;
         const wasChanged = JSON.stringify(rowData) !== JSON.stringify(newRowData);
         if (wasChanged) {
@@ -76,7 +76,7 @@ const Table = ({
     };
 
     const handleShow = (rowData) => {
-        console.log('bb ~  ~ file: table.js:79 ~ handleShow ~ rowData:', rowData);
+        console.log('bb ~ handleShow ~ rowData:', rowData);
         dispatch(setIsSidebarVisible(true, rowData));
     };
     const buttonBodyTemplate = (rowData) => {

@@ -10,12 +10,15 @@ import {
     UPDATE_ITEM_FAILURE,
     DELETE_ITEMS_SUCCESS,
     DELETE_ITEMS_FAILURE,
-    GET_TMDB_DATA_BEGIN,
-    GET_TMDB_DATA_SUCCESS,
-    GET_TMDB_DATA_FAILURE,
+    GET_GIANT_BOMB_DATA_BEGIN,
+    GET_GIANT_BOMB_DATA_SUCCESS,
+    GET_GIANT_BOMB_DATA_FAILURE,
     GET_GOOGLE_BOOKS_DATA_BEGIN,
     GET_GOOGLE_BOOKS_DATA_SUCCESS,
     GET_GOOGLE_BOOKS_DATA_FAILURE,
+    GET_TMDB_DATA_BEGIN,
+    GET_TMDB_DATA_SUCCESS,
+    GET_TMDB_DATA_FAILURE,
     SET_IS_SIDEBAR_VISIBLE
 } from './action-types';
 
@@ -79,6 +82,18 @@ export const getGoogleBooksDataSuccess = (data) => ({
 });
 export const getGoogleBooksDataFailure = (errors) => ({
     type: GET_GOOGLE_BOOKS_DATA_FAILURE,
+    payload: { errors }
+});
+
+export const getGiantBombDataBegin = () => ({
+    type: GET_GIANT_BOMB_DATA_BEGIN
+});
+export const getGiantBombDataSuccess = (data) => ({
+    type: GET_GIANT_BOMB_DATA_SUCCESS,
+    payload: { data }
+});
+export const getGiantBombDataFailure = (errors) => ({
+    type: GET_GIANT_BOMB_DATA_FAILURE,
     payload: { errors }
 });
 
