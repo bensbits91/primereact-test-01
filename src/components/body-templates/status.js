@@ -1,0 +1,37 @@
+import React from 'react';
+import { Tag } from 'primereact/tag';
+
+const statusBodyTemplate = (item) => {
+    const status = item && item.status ? item.status : '';
+    let color = '';
+    let iconCode = '';
+    switch (status) {
+        case 'Now':
+            color = 'warning';
+            iconCode = 'pi pi-play';
+            break;
+        case 'Past':
+            color = 'success';
+            iconCode = 'pi pi-check';
+            break;
+        case 'Future':
+            color = 'info';
+            iconCode = 'pi pi-calendar';
+            break;
+        case 'On Hold':
+            color = 'info';
+            iconCode = 'pi pi-pause';
+            break;
+        case 'Dropped':
+            color = 'danger';
+            iconCode = 'pi pi-times';
+            break;
+        default:
+            color = 'secondary';
+            iconCode = 'pi pi-question';
+    }
+
+    return <Tag value={status} severity={color} icon={iconCode} />;
+};
+
+export default statusBodyTemplate;

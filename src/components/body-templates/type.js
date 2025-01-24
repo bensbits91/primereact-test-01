@@ -1,0 +1,31 @@
+import React from 'react';
+
+const typeBodyTemplate = (item) => {
+    const itemType = item && item.type ? item.type : '';
+    let iconCode = '';
+    switch (itemType) {
+        case 'Book':
+            iconCode = 'pi pi-book';
+            break;
+        case 'Movie':
+            iconCode = 'pi pi-video';
+            break;
+        case 'TV':
+            iconCode = 'pi pi-desktop';
+            break;
+        case 'Video Game':
+            iconCode = 'pi pi-discord';
+            break;
+        default:
+            iconCode = 'pi pi-question';
+    }
+
+    return (
+        <span className={`type-badge type-${itemType.toLowerCase()}`}>
+            <i className={`pi ${iconCode}`}></i>
+            {itemType}
+        </span>
+    );
+};
+
+export default typeBodyTemplate;
