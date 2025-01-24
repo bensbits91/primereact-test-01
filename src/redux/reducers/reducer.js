@@ -9,6 +9,9 @@ import {
     DELETE_ITEMS_SUCCESS,
     DELETE_ITEMS_FAILURE,
     SET_IS_SIDEBAR_VISIBLE,
+    GET_GOOGLE_BOOKS_DATA_BEGIN,
+    GET_GOOGLE_BOOKS_DATA_SUCCESS,
+    GET_GOOGLE_BOOKS_DATA_FAILURE,
     GET_TMDB_DATA_BEGIN,
     GET_TMDB_DATA_SUCCESS,
     GET_TMDB_DATA_FAILURE
@@ -123,6 +126,27 @@ export default function (state = initialState, action) {
                 sidebarDataOptions: action.payload.data.data.results
             };
         case GET_TMDB_DATA_FAILURE:
+            return {
+                ...state,
+                loading: false,
+                errors: action.payload.errors,
+                sidebarDataOptions: null
+            };
+
+        case GET_GOOGLE_BOOKS_DATA_BEGIN:
+            return {
+                ...state,
+                loading: true,
+                errors: null
+            };
+        case GET_GOOGLE_BOOKS_DATA_SUCCESS:
+            return {
+                ...state,
+                loading: false,
+                errors: null,
+                sidebarDataOptions: action.payload.data.data.items
+            };
+        case GET_GOOGLE_BOOKS_DATA_FAILURE:
             return {
                 ...state,
                 loading: false,

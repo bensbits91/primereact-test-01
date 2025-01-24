@@ -3,7 +3,8 @@ const {
     addItem,
     updateItem,
     deleteItems,
-    getTmdbDataController
+    getTmdbDataController,
+    getGoogleBooksDataController
 } = require('./controller');
 
 const routes = [
@@ -31,6 +32,11 @@ const routes = [
         method: 'GET',
         url: '/api/tmdb/search',
         handler: getTmdbDataController
+    },
+    {
+        method: 'GET',
+        url: '/api/googlebooks/search',
+        handler: getGoogleBooksDataController
     }
 ];
 

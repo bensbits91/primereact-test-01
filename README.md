@@ -3,8 +3,11 @@
 ## now
 * type icons
 * status badges
-* handle other types
-* cool/pretty report/export (view in app) (share pdf, png, csv)
+* rating respond to hover ??
+* handle more types
+* editable in sidebar-details: rating and status (type???)
+* thing-specific status text
+* cool/pretty report (view in app) and export (shareable pdf, png, csv)
 
 ## soon
 * columns for 3rd-party metadata, sort/filter by year, genre...
@@ -27,13 +30,14 @@
 ## types currently supported
 - tv
 - movie
+- book
 
 ## future type ideas
-- book (comics/graphic?)
 - music (artist/band, album, song)
 - video game
 - board/card game
 - actor / comedian
+- comics/graphic
 - sports team
 - athelete
 - animals

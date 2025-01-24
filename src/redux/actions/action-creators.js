@@ -13,6 +13,9 @@ import {
     GET_TMDB_DATA_BEGIN,
     GET_TMDB_DATA_SUCCESS,
     GET_TMDB_DATA_FAILURE,
+    GET_GOOGLE_BOOKS_DATA_BEGIN,
+    GET_GOOGLE_BOOKS_DATA_SUCCESS,
+    GET_GOOGLE_BOOKS_DATA_FAILURE,
     SET_IS_SIDEBAR_VISIBLE
 } from './action-types';
 
@@ -64,6 +67,18 @@ export const getTmdbDataSuccess = (data) => ({
 });
 export const getTmdbDataFailure = (errors) => ({
     type: GET_TMDB_DATA_FAILURE,
+    payload: { errors }
+});
+
+export const getGoogleBooksDataBegin = () => ({
+    type: GET_GOOGLE_BOOKS_DATA_BEGIN
+});
+export const getGoogleBooksDataSuccess = (data) => ({
+    type: GET_GOOGLE_BOOKS_DATA_SUCCESS,
+    payload: { data }
+});
+export const getGoogleBooksDataFailure = (errors) => ({
+    type: GET_GOOGLE_BOOKS_DATA_FAILURE,
     payload: { errors }
 });
 

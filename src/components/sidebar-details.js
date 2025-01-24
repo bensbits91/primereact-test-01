@@ -1,17 +1,33 @@
 import React from 'react';
 
 const SidebarDetails = ({ thing }) => {
-    const { name, externalData } = thing;
+    const { type, externalData } = thing;
     const { data } = externalData;
-    const { overview, poster_path } = data;
-    const posterPath = `https://image.tmdb.org/t/p/w92${poster_path}`;
 
-    // todo: add more details
+    let imgPath = '';
+    let thingName = '';
+    let thingDescription = '';
+
+    switch (type) { // todo: should I desctructure data in each case?
+        case 'Book':
+            imgPath = data.volumeInfo.imageLinks.thumbnail;
+            thingName = data.volumeInfo.title;
+            thingDescription = data.volumeInfo.description;
+            break;
+        case 'Movie':
+        case 'TV':
+            imgPath = `https://image.tmdb.org/t/p/w92${data.poster_path}`;
+            thingName = data.title;
+            thingDescription = data.overview;
+            break;
+        default:
+            console.log('unknown type');
+    }
 
     return (
         <div>
-            <img src={posterPath} alt={name} />
-            <p>{overview}</p>
+            <img src={imgPath} alt={thingName} />
+            <p>{thingDescription}</p>
         </div>
     );
 };

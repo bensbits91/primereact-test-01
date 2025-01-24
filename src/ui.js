@@ -24,7 +24,7 @@ const Ui = ({ items }) => {
         dispatch(readItemsAction());
     }, [dispatch]);
 
-    const handleSubmit = (oldRowData, newRowData) => {
+    const handleSubmit = (oldRowData, newRowData) => { // todo: implement undo
         if (newRowData.id) {
             dispatch(updateItemAction(newRowData));
         } else {
