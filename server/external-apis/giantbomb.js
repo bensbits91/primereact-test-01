@@ -1,13 +1,13 @@
 const axios = require('axios');
 const {
-    parsed: { GOOGLE_BOOKS_API_KEY, GOOGLE_BOOKS_BASE_URL }
+    parsed: { GIANTBOMB_API_KEY, GIANTBOMB_BASE_URL }
 } = require('dotenv').config({ path: '.env.local' });
 const { makeSafeQueryString } = require('./utils');
 
-const getGoogleBooksData = async (searchTerm) => {
+const getGiantBombData = async (searchTerm) => {
     const safeSearchTerm = makeSafeQueryString(searchTerm);
 
-    const url = `${GOOGLE_BOOKS_BASE_URL}?q=${safeSearchTerm}&key=${GOOGLE_BOOKS_API_KEY}`;
+    const url = `${GIANTBOMB_BASE_URL}/search?query=${safeSearchTerm}&api_key=${GIANTBOMB_API_KEY}&format=json`;
     const options = {
         method: 'GET',
         headers: {
@@ -23,4 +23,4 @@ const getGoogleBooksData = async (searchTerm) => {
     }
 };
 
-module.exports = { getGoogleBooksData };
+module.exports = { getGiantBombData };

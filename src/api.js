@@ -23,3 +23,7 @@ export const fetchItemsFromTmdb = (searchTerm, type) => {
 export const fetchItemsFromGoogleBooks = (searchTerm) => {
     return axios.get('/api/googlebooks/search', { params: { searchTerm } });
 };
+
+export const fetchItemsFromGiantBomb = (searchTerm) => {
+    return axios.get('/api/giantbomb/search', { params: { searchTerm } });
+};

@@ -4,7 +4,8 @@ const {
     updateItem,
     deleteItems,
     getTmdbDataController,
-    getGoogleBooksDataController
+    getGoogleBooksDataController,
+    getGiantBombDataController
 } = require('./controller');
 
 const routes = [
@@ -37,6 +38,11 @@ const routes = [
         method: 'GET',
         url: '/api/googlebooks/search',
         handler: getGoogleBooksDataController
+    },
+    {
+        method: 'GET',
+        url: '/api/giantbomb/search',
+        handler: getGiantBombDataController
     }
 ];
 

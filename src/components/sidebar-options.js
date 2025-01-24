@@ -9,7 +9,6 @@ const SidebarOptions = ({ dataOptions }) => {
     const sidebarData = useSelector((state) => state.sidebarData);
 
     const { type } = sidebarData || {};
-    console.log('bb ~ file: sidebar-options.js:12 ~ SidebarOptions ~ type:', type);
 
     const itemTemplate = (data, layout) => {
         console.log('bb ~ itemTemplate ~ data:', data);
@@ -25,6 +24,10 @@ const SidebarOptions = ({ dataOptions }) => {
             case 'TV':
                 imgPath = `https://image.tmdb.org/t/p/w92${data.poster_path}`;
                 resultName = data.title;
+                break;
+            case 'Video Game':
+                imgPath = data.image.thumb_url;
+                resultName = data.name;
                 break;
             default:
                 console.log('unknown type');

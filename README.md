@@ -15,6 +15,7 @@
 * unit testing
 * styling
 * accessibility
+* clear and re-search in sidebar
 
 ## someday / maybe
 * import things (e.g. from goodreads)
@@ -31,10 +32,10 @@
 - tv
 - movie
 - book
+- video game
 
 ## future type ideas
 - music (artist/band, album, song)
-- video game
 - board/card game
 - actor / comedian
 - comics/graphic
