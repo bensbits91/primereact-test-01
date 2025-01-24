@@ -19,6 +19,7 @@ const Table = ({
 }) => {
     const dispatch = useDispatch();
 
+    // todo: move editors to ./editors/...
     const textEditor = (options) => {
         return (
             <InputText
@@ -52,6 +53,7 @@ const Table = ({
         );
     };
 
+    // todo: move body templates to ./body-templates/...
     const ratingBodyTemplate = (item) => {
         return <Rating value={item.rating} readOnly stars={10} />;
     };
@@ -90,6 +92,34 @@ const Table = ({
         );
     };
 
+    const typeBodyTemplate = (item) => {
+        const itemType = item && item.type ? item.type : '';
+        let iconCode = '';
+        switch (itemType) {
+            case 'Book':
+                iconCode = 'pi pi-book';
+                break;
+            case 'Movie':
+                iconCode = 'pi pi-video';
+                break;
+            case 'TV':
+                iconCode = 'pi pi-desktop';
+                break;
+            case 'Video Game':
+                iconCode = 'pi pi-discord';
+                break;
+            default:
+                iconCode = 'pi pi-question';
+        }
+
+        return (
+            <span className={`type-badge type-${itemType.toLowerCase()}`}>
+                <i className={`pi ${iconCode}`}></i>
+                {itemType}
+            </span>
+        );
+    };
+
     return (
         <DataTable
             value={items}
@@ -109,6 +139,7 @@ const Table = ({
             <Column
                 field='type'
                 header='Type'
+                body={typeBodyTemplate}
                 editor={(options) => typeEditor(options)}
                 onCellEditComplete={onCellEditComplete}></Column>
             <Column
@@ -124,9 +155,7 @@ const Table = ({
                 body={ratingBodyTemplate}
                 editor={(options) => ratingEditor(options)}
                 onCellEditComplete={onCellEditComplete}></Column>
-            <Column
-                header='Details'
-                body={buttonBodyTemplate}></Column>
+            <Column header='Details' body={buttonBodyTemplate}></Column>
         </DataTable>
     );
 };
