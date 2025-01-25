@@ -1,7 +1,13 @@
 import React from 'react';
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
-import { RatingViewer, ShowSidebarButton, StatusViewer, TypeViewer } from './viewers';
+import {
+    ImageViewer,
+    RatingViewer,
+    ShowSidebarButton,
+    StatusViewer,
+    TypeViewer
+} from './viewers';
 import { RatingEditor, StatusEditor, TextEditor, TypeEditor } from './editors';
 
 const Table = ({
@@ -32,6 +38,11 @@ const Table = ({
             // frozenValue={[]}
             tableStyle={{ minWidth: '50rem' }}>
             <Column
+                header='Image'
+                body={(rowData) =>
+                    ImageViewer({ item: rowData, imgWidth: '60' })
+                }></Column>
+            <Column
                 field='name'
                 header='Name'
                 sortable={true}
@@ -40,21 +51,21 @@ const Table = ({
             <Column
                 field='type'
                 header='Type'
-                body={TypeViewer}
+                body={(rowData) => TypeViewer({ item: rowData })}
                 editor={(options) => TypeEditor(options)}
                 onCellEditComplete={onCellEditComplete}></Column>
             <Column
                 field='status'
                 header='Status'
                 sortable={true}
-                body={StatusViewer}
+                body={(rowData) => StatusViewer({ item: rowData })}
                 editor={(options) => StatusEditor(options)}
                 onCellEditComplete={onCellEditComplete}></Column>
             <Column
                 field='rating'
                 header='Rating'
                 sortable={true}
-                body={RatingViewer}
+                body={(rowData) => RatingViewer({ item: rowData })}
                 editor={(options) => RatingEditor(options)}
                 onCellEditComplete={onCellEditComplete}></Column>
             <Column header='Details' body={ShowSidebarButton}></Column>

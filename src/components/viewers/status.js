@@ -1,15 +1,11 @@
 import React from 'react';
 import { Tag } from 'primereact/tag';
 
-const StatusViewer = (item) => {
-    let status = item && item.status ? item.status : '';
-    // todo: this is a hack, need to fix this
-    if (item.thing) {
-        status = item.thing.status;
-    }
-
+const StatusViewer = ({ item }) => {
+    const { status } = item;
     let color = '';
     let iconCode = '';
+
     switch (status) {
         case 'Now':
             color = 'warning';

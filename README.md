@@ -1,14 +1,15 @@
 # todo
 
 ## now
-* image components
-* thumbnail column in table
 * rating respond to hover ??
-* handle more types
 * editable in sidebar-details: rating and status (type???)
 * thing-specific status text
 * cool/pretty report (view in app) and export (shareable pdf, png, csv)
 * better way to create new item
+* views - compact / fewer columns
+* views - grid
+* views - by type
+* views - by status (or should this just be a filter?)
 
 ## soon
 * columns for 3rd-party metadata, sort/filter by year, genre...

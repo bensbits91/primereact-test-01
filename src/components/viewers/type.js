@@ -1,32 +1,12 @@
 import React from 'react';
+import getDataByThingType from '../../utils/get-data-by-thing-type';
 
-const TypeViewer = (item) => {
-    let type = item && item.type ? item.type : '';
-    // todo: this is a hack, need to fix this
-    if (item.thing) {
-        type = item.thing.type;
-    }
-
-    let iconCode = '';
-    switch (type) {
-        case 'Book':
-            iconCode = 'pi pi-book';
-            break;
-        case 'Movie':
-            iconCode = 'pi pi-video';
-            break;
-        case 'TV':
-            iconCode = 'pi pi-desktop';
-            break;
-        case 'Video Game':
-            iconCode = 'pi pi-discord';
-            break;
-        default:
-            iconCode = 'pi pi-question';
-    }
+const TypeViewer = ({ item }) => {
+    const { iconCode, type } = getDataByThingType(item);
+    const typeStyle = type ? ` type-${type.toLowerCase()}` : '';
 
     return (
-        <span className={`type-badge type-${type.toLowerCase()}`}>
+        <span className={`type-badge${typeStyle}`}>
             <i className={`pi ${iconCode}`}></i>
             {type}
         </span>
