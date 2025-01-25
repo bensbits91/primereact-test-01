@@ -1,9 +1,14 @@
 import React from 'react';
 
 const TypeViewer = (item) => {
-    const itemType = item && item.type ? item.type : '';
+    let type = item && item.type ? item.type : '';
+    // todo: this is a hack, need to fix this
+    if (item.thing) {
+        type = item.thing.type;
+    }
+
     let iconCode = '';
-    switch (itemType) {
+    switch (type) {
         case 'Book':
             iconCode = 'pi pi-book';
             break;
@@ -21,9 +26,9 @@ const TypeViewer = (item) => {
     }
 
     return (
-        <span className={`type-badge type-${itemType.toLowerCase()}`}>
+        <span className={`type-badge type-${type.toLowerCase()}`}>
             <i className={`pi ${iconCode}`}></i>
-            {itemType}
+            {type}
         </span>
     );
 };

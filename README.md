@@ -3,8 +3,6 @@
 ## now
 * image components
 * thumbnail column in table
-* type icons
-* status badges
 * rating respond to hover ??
 * handle more types
 * editable in sidebar-details: rating and status (type???)
