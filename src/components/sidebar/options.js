@@ -3,35 +3,14 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Button } from 'primereact/button';
 import { DataView } from 'primereact/dataview';
 import { updateItemAction } from '../../redux/actions/action-dispatchers';
+import getDataByThingType from '../../utils/get-data-by-thing-type';
 
 const SidebarOptions = ({ dataOptions }) => {
     const dispatch = useDispatch();
     const sidebarData = useSelector((state) => state.sidebarData);
 
-    const { type } = sidebarData || {};
-
     const itemTemplate = (data, layout) => {
-        console.log('bb ~ itemTemplate ~ data:', data);
-        let imgPath = '';
-        let resultName = '';
-
-        switch (type) {
-            case 'Book':
-                imgPath = data.volumeInfo.imageLinks.thumbnail;
-                resultName = data.volumeInfo.title;
-                break;
-            case 'Movie':
-            case 'TV':
-                imgPath = `https://image.tmdb.org/t/p/w92${data.poster_path}`;
-                resultName = data.title;
-                break;
-            case 'Video Game':
-                imgPath = data.image.thumb_url;
-                resultName = data.name;
-                break;
-            default:
-                console.log('unknown type');
-        }
+        const {imgPath, thingName} = getDataByThingType(sidebarData, data);
 
         const handleAddExternalData = (data) => {
             const newSidebarData = { ...sidebarData, externalData: { data } };
@@ -41,9 +20,9 @@ const SidebarOptions = ({ dataOptions }) => {
         return (
             <div className='p-col-12'>
                 <div className='product-list-item'>
-                    <img src={imgPath} alt={resultName} />
+                    <img src={imgPath} alt={`${thingName} image`} />
                     <div className='product-list-detail'>
-                        <h5 className='p-mb-2'>{resultName}</h5>
+                        <h5 className='p-mb-2'>{thingName}</h5>
                         <h6 className='p-mt-0 p-mb-2'>{JSON.stringify(data)}</h6>
                     </div>
                     <div className='product-list-action'>
