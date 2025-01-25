@@ -1,4 +1,11 @@
 import React from 'react';
+import StatusViewer from '../viewers/status';
+import TypeViewer from '../viewers/type';
+import RatingViewer from '../viewers/rating';
+import TextEditor from '../editors/text';
+import TypeEditor from '../editors/type';
+import StatusEditor from '../editors/status';
+import RatingEditor from '../editors/rating';
 
 const SidebarDetails = ({ thing }) => {
     const { type, externalData } = thing;

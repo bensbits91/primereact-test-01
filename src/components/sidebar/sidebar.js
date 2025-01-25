@@ -1,14 +1,14 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { setIsSidebarVisible } from '../redux/actions/action-creators'; // todo: should this have a thunk in action-dispatchers.js?
+import { setIsSidebarVisible } from '../../redux/actions/action-creators'; // todo: should this have a thunk in action-dispatchers.js?
 import {
     getTmdbDataAction,
     getGoogleBooksDataAction,
     getGiantBombDataAction
-} from '../redux/actions/action-dispatchers';
+} from '../../redux/actions/action-dispatchers';
 import { Sidebar as PrimeSideBar } from 'primereact/sidebar';
-import SidebarOptions from './sidebar-options';
-import SidebarDetails from './sidebar-details';
+import SidebarOptions from './options';
+import SidebarDetails from './details';
 
 const Sidebar = () => {
     const dispatch = useDispatch();

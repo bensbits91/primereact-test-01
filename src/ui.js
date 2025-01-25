@@ -7,7 +7,7 @@ import {
     deleteItemsAction
 } from './redux/actions/action-dispatchers';
 import { handleSubmit } from './utils/crud';
-import Sidebar from './components/sidebar';
+import { Sidebar } from './components/sidebar';
 import Table from './components/table';
 import Menu from './components/menu';
 import 'primereact/resources/themes/lara-dark-teal/theme.css';
