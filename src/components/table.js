@@ -1,14 +1,8 @@
 import React from 'react';
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
-import StatusViewer from './viewers/status';
-import TypeViewer from './viewers/type';
-import RatingViewer from './viewers/rating';
-import ShowSidebarButton from './viewers/show-sidebar-button';
-import TextEditor from './editors/text';
-import TypeEditor from './editors/type';
-import StatusEditor from './editors/status';
-import RatingEditor from './editors/rating';
+import { RatingViewer, ShowSidebarButton, StatusViewer, TypeViewer } from './viewers';
+import { RatingEditor, StatusEditor, TextEditor, TypeEditor } from './editors';
 
 const Table = ({
     items,
