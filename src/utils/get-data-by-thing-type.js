@@ -2,6 +2,7 @@
  * todo:
  * should these be set using setters on the model before save?
  * or getters?
+ * should there be a schema for each type?
  */
 
 const getDataByThingType = (thing, searchResult) => {
@@ -10,7 +11,6 @@ const getDataByThingType = (thing, searchResult) => {
     const data = searchResult || item.externalData?.data;
 
     switch (type) {
-        // todo: should I desctructure data in each case?
         case 'Book':
             return {
                 type,
@@ -22,7 +22,7 @@ const getDataByThingType = (thing, searchResult) => {
         case 'Movie':
             return {
                 type,
-                imgPath: `https://image.tmdb.org/t/p/w342${data?.poster_path}`,
+                imgPath: data?.poster_path ? `https://image.tmdb.org/t/p/w342${data?.poster_path}` : '',
                 thingName: data?.name || name,
                 thingDescription: data?.overview,
                 iconCode: 'pi pi-video'
@@ -30,7 +30,7 @@ const getDataByThingType = (thing, searchResult) => {
         case 'TV':
             return {
                 type,
-                imgPath: `https://image.tmdb.org/t/p/w342${data?.poster_path}`,
+                imgPath: data?.poster_path ? `https://image.tmdb.org/t/p/w342${data?.poster_path}` : '',
                 thingName: data?.name || name,
                 thingDescription: data?.overview,
                 iconCode: 'pi pi-desktop'

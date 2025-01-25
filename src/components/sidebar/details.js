@@ -1,14 +1,13 @@
 import React from 'react';
-import { RatingViewer, StatusViewer, TypeViewer } from '../viewers';
-import { Image } from 'primereact/image';
+import { ImageViewer, RatingViewer, StatusViewer, TypeViewer } from '../viewers';
 import getDataByThingType from '../../utils/get-data-by-thing-type';
 
 const SidebarDetails = ({ thing }) => {
-    const { imgPath, thingName, thingDescription } = getDataByThingType(thing);
+    const { thingDescription } = getDataByThingType(thing);
 
     return (
         <div>
-            <Image src={imgPath} alt={`${thingName} image`} width='100' preview />
+            <ImageViewer thing={thing} imgWidth='200' />
             <TypeViewer thing={thing} />
             <RatingViewer thing={thing} />
             <StatusViewer thing={thing} />

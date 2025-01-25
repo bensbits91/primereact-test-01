@@ -1,7 +1,13 @@
 import React from 'react';
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
-import { RatingViewer, ShowSidebarButton, StatusViewer, TypeViewer } from './viewers';
+import {
+    ImageViewer,
+    RatingViewer,
+    ShowSidebarButton,
+    StatusViewer,
+    TypeViewer
+} from './viewers';
 import { RatingEditor, StatusEditor, TextEditor, TypeEditor } from './editors';
 
 const Table = ({
@@ -31,6 +37,7 @@ const Table = ({
             removableSort
             // frozenValue={[]}
             tableStyle={{ minWidth: '50rem' }}>
+            <Column header='Image' body={ImageViewer}></Column>
             <Column
                 field='name'
                 header='Name'

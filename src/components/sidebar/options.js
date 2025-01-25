@@ -2,7 +2,8 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Button } from 'primereact/button';
 import { DataView } from 'primereact/dataview';
-import { Image } from 'primereact/image';
+import { Image } from 'primereact/image'; // todo: replace with ImageViewer
+// import { ImageViewer } from '../viewers';
 import { updateItemAction } from '../../redux/actions/action-dispatchers';
 import getDataByThingType from '../../utils/get-data-by-thing-type';
 
@@ -21,7 +22,8 @@ const SidebarOptions = ({ dataOptions }) => {
         return (
             <div className='p-col-12'>
                 <div className='product-list-item'>
-                    <Image src={imgPath} alt={`${thingName} image`} width='100' preview />
+                    <Image src={imgPath} alt={`${thingName} image`} width='200' preview /> 
+                    {/* <ImageViewer thing={data} imgWidth='200' /> */}
                     <div className='product-list-detail'>
                         <h5 className='p-mb-2'>{thingName}</h5>
                         <h6 className='p-mt-0 p-mb-2'>{JSON.stringify(data)}</h6>
