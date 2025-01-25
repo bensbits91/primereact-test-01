@@ -7,10 +7,10 @@ const SidebarDetails = ({ thing }) => {
 
     return (
         <div>
-            <ImageViewer thing={thing} imgWidth='200' />
-            <TypeViewer thing={thing} />
-            <RatingViewer thing={thing} />
-            <StatusViewer thing={thing} />
+            <ImageViewer item={thing} imgWidth='200' />
+            <TypeViewer item={thing} />
+            <RatingViewer item={thing} />
+            <StatusViewer item={thing} />
             <p>{thingDescription}</p>
         </div>
     );
