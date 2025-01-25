@@ -17,6 +17,9 @@ mongoose
     .then(() => console.log('MongoDB connected'))
     .catch((e) => console.log('MongoDB could not be connected due to ', e));
 
+// Register models
+require('./models/Thing'); // todo: confirm this is the correct way to register models
+
 // handles GET / request
 fastify.get('/', async (request, reply) => {
     try {
