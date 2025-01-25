@@ -10,6 +10,7 @@
 * editable in sidebar-details: rating and status (type???)
 * thing-specific status text
 * cool/pretty report (view in app) and export (shareable pdf, png, csv)
+* better way to create new item
 
 ## soon
 * columns for 3rd-party metadata, sort/filter by year, genre...
@@ -22,6 +23,7 @@
 * add related things to my things - discovery
 * filter search results (e.g. by author or artist)
 * better icons
+* better rating input
 
 ## someday / maybe
 * image viewer (for things with multiple images (e.g. music artist) or editions (e.g. book))

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Menubar } from 'primereact/menubar';
 
-const TableMenu = () => {
+const Menu = () => {
     const items = [
         {
             label: 'Home',
@@ -56,4 +56,4 @@ const TableMenu = () => {
     );
 };
 
-export default TableMenu;
+export default Menu;
