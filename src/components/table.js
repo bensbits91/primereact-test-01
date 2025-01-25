@@ -1,13 +1,8 @@
 import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
-import { InputText } from 'primereact/inputtext';
-import { Dropdown } from 'primereact/dropdown';
-import { Rating } from 'primereact/rating';
-import { Button } from 'primereact/button';
-import { types, statuses } from '../../constants';
-import { setIsSidebarVisible } from '../redux/actions/action-creators';
+import { RatingViewer, ShowSidebarButton, StatusViewer, TypeViewer } from './viewers';
+import { RatingEditor, StatusEditor, TextEditor, TypeEditor } from './editors';
 
 const Table = ({
     items,
@@ -17,55 +12,6 @@ const Table = ({
     onShowDeletedItemsClick,
     handleDeleteItems */
 }) => {
-    const dispatch = useDispatch();
-
-    const textEditor = (options) => {
-        return (
-            <InputText
-                type='text'
-                value={options.value}
-                onChange={(e) => options.editorCallback(e.target.value)}
-                onKeyDown={(e) => e.stopPropagation()}
-            />
-        );
-    };
-
-    const typeEditor = (options) => {
-        return (
-            <Dropdown
-                value={options.value}
-                onChange={(e) => options.editorCallback(e.target.value)}
-                placeholder='Select a type'
-                options={types}
-            />
-        );
-    };
-
-    const statusEditor = (options) => {
-        return (
-            <Dropdown
-                value={options.value}
-                onChange={(e) => options.editorCallback(e.target.value)}
-                options={statuses}
-                placeholder='Select a status'
-            />
-        );
-    };
-
-    const ratingBodyTemplate = (item) => {
-        return <Rating value={item.rating} readOnly stars={10} />;
-    };
-
-    const ratingEditor = (options) => {
-        return (
-            <Rating
-                value={options.value}
-                onChange={(e) => options.editorCallback(e.target.value)}
-                stars={10}
-            />
-        );
-    };
-
     const onCellEditComplete = (e) => {
         console.log('bb ~ onCellEditComplete ~ e:', e);
         const { rowData, newRowData } = e;
@@ -73,21 +19,6 @@ const Table = ({
         if (wasChanged) {
             handleSubmit(rowData, newRowData);
         }
-    };
-
-    const handleShow = (rowData) => {
-        console.log('bb ~ handleShow ~ rowData:', rowData);
-        dispatch(setIsSidebarVisible(true, rowData));
-    };
-    const buttonBodyTemplate = (rowData) => {
-        return (
-            <Button
-                type='button'
-                icon='pi pi-info-circle'
-                className='p-button-rounded p-button-warning'
-                onClick={() => handleShow(rowData)}
-            />
-        );
     };
 
     return (
@@ -104,29 +35,29 @@ const Table = ({
                 field='name'
                 header='Name'
                 sortable={true}
-                editor={(options) => textEditor(options)}
+                editor={(options) => TextEditor(options)}
                 onCellEditComplete={onCellEditComplete}></Column>
             <Column
                 field='type'
                 header='Type'
-                editor={(options) => typeEditor(options)}
+                body={TypeViewer}
+                editor={(options) => TypeEditor(options)}
                 onCellEditComplete={onCellEditComplete}></Column>
             <Column
                 field='status'
                 header='Status'
                 sortable={true}
-                editor={(options) => statusEditor(options)}
+                body={StatusViewer}
+                editor={(options) => StatusEditor(options)}
                 onCellEditComplete={onCellEditComplete}></Column>
             <Column
                 field='rating'
                 header='Rating'
                 sortable={true}
-                body={ratingBodyTemplate}
-                editor={(options) => ratingEditor(options)}
+                body={RatingViewer}
+                editor={(options) => RatingEditor(options)}
                 onCellEditComplete={onCellEditComplete}></Column>
-            <Column
-                header='Details'
-                body={buttonBodyTemplate}></Column>
+            <Column header='Details' body={ShowSidebarButton}></Column>
         </DataTable>
     );
 };

@@ -1,13 +1,14 @@
 # todo
 
 ## now
-* type icons
-* status badges
+* image components
+* thumbnail column in table
 * rating respond to hover ??
 * handle more types
 * editable in sidebar-details: rating and status (type???)
 * thing-specific status text
 * cool/pretty report (view in app) and export (shareable pdf, png, csv)
+* better way to create new item
 
 ## soon
 * columns for 3rd-party metadata, sort/filter by year, genre...
@@ -15,16 +16,23 @@
 * unit testing
 * styling
 * accessibility
-* clear and re-search in sidebar
+* clear externalData and re-search in sidebar
+* show related things (e.g. albums by a musician) - discovery
+* add related things to my things - discovery
+* filter search results (e.g. by author or artist)
+* better icons
+* better rating input
 
 ## someday / maybe
+* image viewer (for things with multiple images (e.g. music artist) or editions (e.g. book))
 * import things (e.g. from goodreads)
 * links between your related things
-* login / auth
-* suggested things
+* accounts / login / auth
+* suggested things - discovery
 * social, find people who also like a thing, find people who like lots of things you like
 * mobile apps
 * connect to 3rd party apis to track ratings and status
+* thing-specific alerts (e.g. band coming to town)
 
 # types
 
@@ -35,10 +43,12 @@
 - video game
 
 ## future type ideas
-- music (artist/band, album, song)
+- music artist/band
+- music album
+- music song
 - board/card game
 - actor / comedian
-- comics/graphic
+- comics/graphic https://comicvine.gamespot.com/api/
 - sports team
 - athelete
 - animals

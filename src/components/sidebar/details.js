@@ -1,4 +1,5 @@
 import React from 'react';
+import { RatingViewer, StatusViewer, TypeViewer } from '../viewers';
 
 const SidebarDetails = ({ thing }) => {
     const { type, externalData } = thing;
@@ -29,10 +30,14 @@ const SidebarDetails = ({ thing }) => {
         default:
             console.log('unknown type');
     }
+    console.log('bb ~ file: details.js:5 ~ SidebarDetails ~ thing:', thing);
 
     return (
         <div>
             <img src={imgPath} alt={thingName} />
+            <TypeViewer thing={thing} />
+            <RatingViewer thing={thing} />
+            <StatusViewer thing={thing} />
             <p>{thingDescription}</p>
         </div>
     );
