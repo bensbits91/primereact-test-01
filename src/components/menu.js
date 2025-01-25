@@ -1,7 +1,11 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { Menubar } from 'primereact/menubar';
+import { downloadCSV } from '../utils/csv';
 
 const Menu = () => {
+    const things = useSelector((state) => state.items);
+
     const items = [
         {
             label: 'Home',
@@ -46,6 +50,23 @@ const Menu = () => {
         {
             label: 'Contact',
             icon: 'pi pi-envelope'
+        },
+        {
+            label: 'Export',
+            icon: 'pi pi-external-link',
+            items: [
+                {
+                    label: 'CSV',
+                    icon: 'pi pi-file-o',
+                    command: () => {
+                        downloadCSV(things);
+                    }
+                },
+                {
+                    label: 'PDF',
+                    icon: 'pi pi-file-pdf'
+                }
+            ]
         }
     ];
 
