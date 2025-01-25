@@ -11,14 +11,12 @@ const SidebarOptions = ({ dataOptions }) => {
     const sidebarData = useSelector((state) => state.sidebarData);
 
     const itemTemplate = (data, layout) => {
-        const handleAddExternalData = (data) => {
-            const newSidebarData = { ...sidebarData, externalData: { data } };
-            dispatch(updateItemAction(newSidebarData));
-        };
-
         const tempThing = { ...sidebarData, externalData: { data } };
-
         const { thingName } = getDataByThingType(tempThing);
+
+        const handleAddExternalData = () => {
+            dispatch(updateItemAction(tempThing));
+        };
 
         return (
             <div className='p-col-12'>
