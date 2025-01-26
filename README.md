@@ -1,57 +1,19 @@
-# todo
+# "Things" -- A Work in Progress :)
 
-## now
-* rating respond to hover ??
-* editable in sidebar-details: rating and status (type???)
-* thing-specific status text
-* cool/pretty report (view in app) and export (shareable pdf, png, csv)
-* better way to create new item
-* views - compact / fewer columns
-* views - grid
-* views - by type
-* views - by status (or should this just be a filter?)
+## What is "Things"?
+- Keep track of your favorite things.
+- Add any "Thing"
+- If it's a support kinda thing, we search an API so you can store details about your thing. Sorta like your own personal mashup. Currently supported kindsa things: TV shows, movies, books and video games. More things to be supported soon...
 
-## soon
-* columns for 3rd-party metadata, sort/filter by year, genre...
-* hide secrets
-* unit testing
-* styling
-* accessibility
-* clear externalData and re-search in sidebar
-* show related things (e.g. albums by a musician) - discovery
-* add related things to my things - discovery
-* filter search results (e.g. by author or artist)
-* better icons
-* better rating input
+## What do we hope "Things" becomes?
+- Social
+- Share your things
+- Find people who like similar things
 
-## someday / maybe
-* image viewer (for things with multiple images (e.g. music artist) or editions (e.g. book))
-* import things (e.g. from goodreads)
-* links between your related things
-* accounts / login / auth
-* suggested things - discovery
-* social, find people who also like a thing, find people who like lots of things you like
-* mobile apps
-* connect to 3rd party apis to track ratings and status
-* thing-specific alerts (e.g. band coming to town)
+## Stack
+React, Prime (UI library), Tailwind
+Redux, Thunk
+Node, Fastify, Mongoose, MongoDB
 
-# types
-
-## types currently supported
-- tv
-- movie
-- book
-- video game
-
-## future type ideas
-- music artist/band
-- music album
-- music song
-- board/card game
-- actor / comedian
-- comics/graphic https://comicvine.gamespot.com/api/
-- sports team
-- athelete
-- animals
-
-afomft
+## Running locally
+Coming soon...
