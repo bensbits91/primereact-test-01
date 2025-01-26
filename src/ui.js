@@ -10,7 +10,8 @@ import { handleSubmit } from './utils/crud';
 import { Sidebar } from './components/sidebar';
 import Table from './components/table';
 import Menu from './components/menu';
-import 'primereact/resources/themes/lara-dark-teal/theme.css';
+import 'primereact/resources/themes/soho-dark/theme.css';
+import 'primereact/resources/primereact.min.css';
 import 'primeicons/primeicons.css';
 // import './ui.css';
 
