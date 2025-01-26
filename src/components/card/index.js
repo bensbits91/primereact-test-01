@@ -1,1 +1,1 @@
-export { default as LargeCard } from './large';
+export { default as ThingCard } from './card';

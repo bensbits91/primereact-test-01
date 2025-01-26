@@ -8,7 +8,7 @@ import {
 } from '../../redux/actions/action-dispatchers';
 import { Sidebar as PrimeSideBar } from 'primereact/sidebar';
 import SidebarOptions from './options';
-import { LargeCard } from '../card';
+import { ThingCard } from '../card';
 
 const Sidebar = () => {
     const dispatch = useDispatch();
@@ -64,7 +64,7 @@ const Sidebar = () => {
                                 <SidebarOptions dataOptions={sidebarDataOptions} />
                             )}
                         {sidebarData && sidebarData.externalData && (
-                            <LargeCard item={sidebarData} />
+                            <ThingCard item={sidebarData} />
                         )}
                     </div>
                 </PrimeSideBar>
