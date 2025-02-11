@@ -53,7 +53,7 @@ const Ui = ({ items }) => {
             <Sidebar />
             <Menu />
             <Table
-                items={itemsWithEmptyRow}
+                items={items}
                 handleSubmit={handleSubmit.bind(null, dispatch)}
                 // handleSelectionChange={handleSelectionChange}
                 // showDeleted={showDeleted}

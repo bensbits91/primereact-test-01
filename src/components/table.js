@@ -36,7 +36,7 @@ const Table = ({
             sortMode='multiple'
             removableSort
             // frozenValue={[]}
-            tableStyle={{ minWidth: '50rem' }}>
+            tableStyle={{ minWidth: '50rem', marginTop: '50px' }}>
             <Column
                 header='Image'
                 body={(rowData) =>

@@ -48,7 +48,6 @@ const Sidebar = () => {
                     visible={isSidebarVisible}
                     onHide={handleHide}
                     position='right'
-                    // className='w-full md:w-20rem lg:w-50rem'
                     style={{ // todo: replace this temp styles
                         height: 'auto',
                         left: 'unset',

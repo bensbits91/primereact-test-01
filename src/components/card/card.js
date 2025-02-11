@@ -5,7 +5,12 @@ import { ImageViewer, RatingViewer, StatusViewer, TypeViewer } from '../viewers'
 import getDataByThingType from '../../utils/get-data-by-thing-type';
 
 const ThingCard = ({ item, size = 'large', btnCb }) => {
-    const { thingDescription, thingName } = getDataByThingType(item);
+    const { author, country, date, genres, language, thingDescription, thingName } =
+        getDataByThingType(item);
+    console.log('bb ~ item:', item);
+    console.log('bb ~ country:', country);
+    console.log('bb ~ language:', language);
+    console.log('bb ~ genres:', genres);
     let imgWidth;
     switch (size) {
         case 'small':
@@ -21,11 +26,17 @@ const ThingCard = ({ item, size = 'large', btnCb }) => {
     return (
         <MainCard size={size}>
             <ImageViewer item={item} imgWidth={imgWidth} />
-            <VerticalCard title={thingName}>
+            <VerticalCard title={thingName} subTitle={author}>
                 <HorizontalCard>
                     <TypeViewer item={item} />
                     <StatusViewer item={item} />
                     <RatingViewer item={item} />
+                </HorizontalCard>
+                <HorizontalCard>
+                    {date && <p>{date}</p>}
+                    {genres && <p>{genres}</p>}
+                    {country && <p>{country}</p>}
+                    {language && <p>{language}</p>}
                 </HorizontalCard>
                 <p>{thingDescription}</p>
                 {btnCb && (
