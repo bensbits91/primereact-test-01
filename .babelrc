@@ -1,5 +1,6 @@
 { 
    "plugins": [ 
-        ["@babel/plugin-transform-class-properties", {}, "asdf"] 
+        ["@babel/plugin-transform-class-properties", {}, "asdf"],
+        ["babel-plugin-styled-components"]
     ]
 }

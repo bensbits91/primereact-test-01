@@ -11,9 +11,9 @@
 - Find people who like similar things
 
 ## Stack
-React, Prime (UI library), Tailwind
-Redux, Thunk
-Node, Fastify, Mongoose, MongoDB
+- React, Prime (UI library), Styled Components
+- Redux, Thunk
+- Node, Fastify, Mongoose, MongoDB
 
 ## Running locally
 Coming soon...

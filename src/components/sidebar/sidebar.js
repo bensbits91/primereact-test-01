@@ -8,7 +8,7 @@ import {
 } from '../../redux/actions/action-dispatchers';
 import { Sidebar as PrimeSideBar } from 'primereact/sidebar';
 import SidebarOptions from './options';
-import { LargeCard } from '../card';
+import { ThingCard } from '../card';
 
 const Sidebar = () => {
     const dispatch = useDispatch();
@@ -48,7 +48,6 @@ const Sidebar = () => {
                     visible={isSidebarVisible}
                     onHide={handleHide}
                     position='right'
-                    // className='w-full md:w-20rem lg:w-50rem'
                     style={{ // todo: replace this temp styles
                         height: 'auto',
                         left: 'unset',
@@ -64,7 +63,7 @@ const Sidebar = () => {
                                 <SidebarOptions dataOptions={sidebarDataOptions} />
                             )}
                         {sidebarData && sidebarData.externalData && (
-                            <LargeCard item={sidebarData} />
+                            <ThingCard item={sidebarData} />
                         )}
                     </div>
                 </PrimeSideBar>

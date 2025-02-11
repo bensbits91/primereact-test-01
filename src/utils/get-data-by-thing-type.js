@@ -4,14 +4,19 @@
  * or getters?
  * should there be a schema for each type?
  */
+import getGenreNames from './genre';
 
 const getDataByThingType = (thing) => {
     const unknownData = {
-        type,
+        country: '',
+        date: '',
+        genres: '',
+        iconCode: 'pi pi-question',
         imgPath: '',
-        thingName: '',
+        language: '',
         thingDescription: '',
-        iconCode: 'pi pi-question'
+        thingName: '',
+        type
     };
 
     if (!thing) return unknownData;
@@ -22,11 +27,16 @@ const getDataByThingType = (thing) => {
     switch (type) {
         case 'Book':
             return {
-                type,
+                author: data?.volumeInfo?.authors?.join(', '),
+                country: data?.saleInfo?.country,
+                date: data?.volumeInfo?.publishedDate,
+                genres: getGenreNames(data?.volumeInfo?.categories, type),
+                iconCode: 'pi pi-book',
                 imgPath: imgPath || data?.volumeInfo?.imageLinks.thumbnail,
-                thingName: data?.volumeInfo?.title || name,
+                language: data?.volumeInfo?.language,
                 thingDescription: data?.volumeInfo?.description,
-                iconCode: 'pi pi-book'
+                thingName: data?.volumeInfo?.title || name,
+                type
             };
         case 'Movie':
         case 'TV':
@@ -36,19 +46,26 @@ const getDataByThingType = (thing) => {
                 : '';
             const filmIconCode = type === 'TV' ? 'pi pi-desktop' : 'pi pi-video';
             return {
-                type,
+                country: data?.origin_country ? (data?.origin_country).join(', ') : '',
+                date: data?.release_date || data?.first_air_date,
+                genres: getGenreNames(data?.genre_ids, type),
+                iconCode: filmIconCode,
                 imgPath: filmImgPath,
-                thingName: data?.name || data?.title || name,
+                language: data?.original_language,
                 thingDescription: data?.overview,
-                iconCode: filmIconCode
+                thingName: data?.name || data?.title || name,
+                type
             };
         case 'Video Game':
             return {
-                type,
+                country: '',
+                date: data?.original_release_date,
+                iconCode: 'pi pi-discord',
                 imgPath: data?.image.small_url,
-                thingName: data?.name || name,
+                language: '',
                 thingDescription: data?.description || data?.deck,
-                iconCode: 'pi pi-discord'
+                thingName: data?.name || name,
+                type
             };
         default:
             return unknownData;

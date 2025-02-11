@@ -49,11 +49,11 @@ const Ui = ({ items }) => {
 
     return (
         <>
-            <h1>Things</h1>
+            {/* <h1>Things</h1> */}
             <Sidebar />
             <Menu />
             <Table
-                items={itemsWithEmptyRow}
+                items={items}
                 handleSubmit={handleSubmit.bind(null, dispatch)}
                 // handleSelectionChange={handleSelectionChange}
                 // showDeleted={showDeleted}
